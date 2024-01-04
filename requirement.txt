@@ -1,5 +1,5 @@
-streamlit
-numpy
-scikit-image
+streamlit==1.29.0
+numpy==1.24.3
+scikit-image==0.22.0
 opencv-python
 matplotlib
