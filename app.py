@@ -110,6 +110,7 @@ if st.button("Check", type="primary"):
 
     if on:
         if (uploaded_file_src is not None & uploaded_file_des is not None):
+            st.write(path_src)
             result = matching(path1 = path_src, path2 = path_des, kind = 'path', draw = draw)
     else:
         if path_src is not None and path_des is not None:
