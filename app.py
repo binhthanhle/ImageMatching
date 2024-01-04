@@ -12,8 +12,8 @@ THRESHOLD = 0.9
 
 def get_input(kind:str = 'path', value1 = None, value2 = None):
     if kind=="path":
-        img1 = io.imread(value1)
-        img2 = io.imread(value2)
+        img1 = io.imread(str(value1))
+        img2 = io.imread(str(value2))
     else:
         img1 = value1
         img2 = value2
