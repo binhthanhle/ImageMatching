@@ -24,6 +24,7 @@ def matching(path1 = None, path2 = None, kind:str = 'path', draw:bool =False) ->
     """ Function to get the matching between two images
     """
     img1, img2 = get_input(kind, path1, path2)
+    st.write(img1.shape)
     st.image(img1, caption='Image 1')
     # Size:
     # h,w,s = img1.shape
