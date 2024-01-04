@@ -109,7 +109,9 @@ if st.button("Check", type="primary"):
     if on:
         if (uploaded_file_src is not None) and (uploaded_file_des is not None):
             im_file_src = Image.open(uploaded_file_src)
+            im_file_src = np.array(im_file_src)
             im_file_des = Image.open(uploaded_file_des)
+            im_file_des = np.array(im_file_des)
             result = matching(path1 = im_file_src, path2 = im_file_des, kind = 'file', draw = draw)
     else:
         if path_src is not None and path_des is not None:
