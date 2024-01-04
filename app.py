@@ -100,14 +100,17 @@ with col2:
     )
     uploaded_file_des = st.file_uploader("Choose a file",key="upload_des", disabled=not on)
 
-if (path_src & path_des) or (uploaded_file_src is not None & uploaded_file_des is not None):
-    draw = st.toggle('Plot the Matching?', key="draw_bool")
-    if on:
+
+draw = st.toggle('Plot the Matching?', key="draw_bool")
+
+if on:
+    if (uploaded_file_src is not None & uploaded_file_des is not None):
         result = matching(path1 = path_src, path2 = path_des, kind = 'path', draw = draw)
-    else:
+else:
+    if path_src is not None and path_des is not None:
         result = matching(path1 = uploaded_file_src, path2 = path_des, kind = 'path', draw = draw) 
 
-    if result==1:
-        st.markdown(MATCH_LABEL, unsafe_allow_html=True)
-    else:
-        st.markdown(NOT_MATCH_LABEL, unsafe_allow_html=True)
+if result==1:
+    st.markdown(MATCH_LABEL, unsafe_allow_html=True)
+else:
+    st.markdown(NOT_MATCH_LABEL, unsafe_allow_html=True)
