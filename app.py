@@ -5,6 +5,7 @@ import cv2 as cv
 from matplotlib import pyplot as plt
 from typing import Tuple
 
+
 # Define the constants
 MIN_MATCH_COUNT = 25
 THRESHOLD = 0.9
@@ -23,9 +24,7 @@ def matching(path1 = None, path2 = None, kind:str = 'path', draw:bool =False) ->
     """ Function to get the matching between two images
     """
     img1, img2 = get_input(kind, path1, path2)
-    fig = plt.figure(figsize=(5, 5))
-    plt.imshow(img1),
-    st.pyplot(fig)
+    st.image(img1, caption='Image 1')
     # Size:
     # h,w,s = img1.shape
     # Initiate SIFT detector
