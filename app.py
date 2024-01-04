@@ -24,8 +24,6 @@ def matching(path1 = None, path2 = None, kind:str = 'path', draw:bool =False) ->
     """ Function to get the matching between two images
     """
     img1, img2 = get_input(kind, path1, path2)
-    st.write(img1.shape)
-    st.image(img1, caption='Image 1')
     # Size:
     # h,w,s = img1.shape
     # Initiate SIFT detector
@@ -57,9 +55,9 @@ def matching(path1 = None, path2 = None, kind:str = 'path', draw:bool =False) ->
                     matchesMask = matchesMask, # draw only inliers
                     flags = 2)
         img_match = cv.drawMatches(img1,kp1,img2,kp2,good,None,**draw_params)
-        fig = plt.figure(figsize=(5, 5))
-        plt.imshow(img_match),
-        st.pyplot(fig)
+
+        st.image(img_match, caption='Matching Check')
+
 
     if matchesMask:
         if len(matchesMask)/len(good) > THRESHOLD:
@@ -85,6 +83,8 @@ if "visibility" not in st.session_state:
 
 col1, col2 = st.columns(2)
 on = st.toggle('Upload File')
+draw = st.toggle('Plot the Matching?', key="draw_bool")
+
 st.write("---")
 with col1:
     col1.header("Image 1")
@@ -106,8 +106,7 @@ with col2:
 
 
 if st.button("Check", type="primary"):
-    draw = st.toggle('Plot the Matching?', key="draw_bool")
-
+    
     if on:
         if (uploaded_file_src is not None & uploaded_file_des is not None):
             result = matching(path1 = uploaded_file_src, path2 = path_des, kind = 'file', draw = draw)
