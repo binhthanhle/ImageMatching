@@ -25,7 +25,7 @@ def matching(path1 = None, path2 = None, kind:str = 'path', draw:bool =False) ->
     img1, img2 = get_input(kind, path1, path2)
 
     # Size:
-    h,w,s = img1.shape
+    # h,w,s = img1.shape
     # Initiate SIFT detector
     sift = cv.SIFT_create()
     kp1, des1 = sift.detectAndCompute(img1,None)
@@ -66,8 +66,9 @@ def matching(path1 = None, path2 = None, kind:str = 'path', draw:bool =False) ->
     else:
         return -1
     
-MATCH_LABEL = '<p style="font-family:Courier; color:Blue; font-size: 20px;">MATCH</p>'
+MATCH_LABEL = '<p style="font-family:Courier; color:Green; font-size: 20px;">MATCH</p>'
 NOT_MATCH_LABEL = '<p style="font-family:Courier; color:Red; font-size: 20px;">NOT MATCH</p>'
+UNCERTAIN_LABEL = '<p style="font-family:Courier; color:Blue; font-size: 20px;">UNCERTAIN_LABEL</p>'
 
 
 ## Header of the application
@@ -109,9 +110,11 @@ if st.button("Check", type="primary"):
             result = matching(path1 = path_src, path2 = path_des, kind = 'path', draw = draw)
     else:
         if path_src is not None and path_des is not None:
-            result = matching(path1 = uploaded_file_src, path2 = path_des, kind = 'path', draw = draw) 
+            result = matching(path1 = uploaded_file_src, path2 = path_des, kind = 'file', draw = draw) 
 
     if result==1:
         st.markdown(MATCH_LABEL, unsafe_allow_html=True)
+    elif result == -1:
+        st.markdown(NOT_MATCH_LABEL, unsafe_allow_html=True)
     else:
         st.markdown(NOT_MATCH_LABEL, unsafe_allow_html=True)
