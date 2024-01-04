@@ -24,7 +24,7 @@ def matching(path1 = None, path2 = None, kind:str = 'path', draw:bool =False) ->
     """
     img1, img2 = get_input(kind, path1, path2)
     fig, ax = plt.subplots(figsize=(5, 5))
-    plt.imshow(img_match, 'gray', ax=ax),
+    plt.imshow(img1, 'gray', ax=ax),
     st.pyplot(fig)
     # Size:
     # h,w,s = img1.shape
