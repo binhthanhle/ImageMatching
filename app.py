@@ -5,7 +5,7 @@ import cv2 as cv
 from matplotlib import pyplot as plt
 from typing import Tuple
 import plotly.express as px
-
+from PIL import Image
 
 # Define the constants
 MIN_MATCH_COUNT = 25
@@ -108,7 +108,9 @@ if st.button("Check", type="primary"):
 
     if on:
         if (uploaded_file_src is not None) and (uploaded_file_des is not None):
-            result = matching(path1 = uploaded_file_src, path2 = uploaded_file_des, kind = 'file', draw = draw)
+            im_file_src = Image.open(uploaded_file_src)
+            im_file_des = Image.open(uploaded_file_des)
+            result = matching(path1 = im_file_src, path2 = im_file_des, kind = 'file', draw = draw)
     else:
         if path_src is not None and path_des is not None:
             result = matching(path1 = path_src, path2 = path_des, kind = 'path', draw = draw)
