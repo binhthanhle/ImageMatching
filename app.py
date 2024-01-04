@@ -1,5 +1,4 @@
 import streamlit as st
-from lib import matching
 from skimage import io
 import numpy as np
 import cv2 as cv
