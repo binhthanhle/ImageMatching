@@ -4,6 +4,7 @@ import numpy as np
 import cv2 as cv
 from matplotlib import pyplot as plt
 from typing import Tuple
+import plotly.express as px
 
 
 # Define the constants
@@ -55,9 +56,8 @@ def matching(path1 = None, path2 = None, kind:str = 'path', draw:bool =False) ->
                     matchesMask = matchesMask, # draw only inliers
                     flags = 2)
         img_match = cv.drawMatches(img1,kp1,img2,kp2,good,None,**draw_params)
-        fig = plt.figure(figsize=(5, 5))
-        plt.imshow(img_match),
-        st.pyplot(fig)
+        fig = px.imshow(im,aspect='equal',labels = "Maching Check") 
+        st.plotly_chart(fig)
 
     if matchesMask:
         if len(matchesMask)/len(good) > THRESHOLD:
