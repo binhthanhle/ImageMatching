@@ -56,7 +56,7 @@ def matching(path1 = None, path2 = None, kind:str = 'path', draw:bool =False) ->
                     matchesMask = matchesMask, # draw only inliers
                     flags = 2)
         img_match = cv.drawMatches(img1,kp1,img2,kp2,good,None,**draw_params)
-        fig = px.imshow(im,aspect='equal',labels = "Maching Check") 
+        fig = px.imshow(img_match,aspect='equal',labels = "Maching Check") 
         st.plotly_chart(fig)
 
     if matchesMask:
