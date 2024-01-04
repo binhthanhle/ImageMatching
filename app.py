@@ -92,7 +92,10 @@ with col1:
         key="inputpath_src",
         disabled=on,
     )
-    uploaded_file_src = st.file_uploader("Choose a file", key="upload_src", disabled=not on)
+    uploaded_file_src = st.file_uploader("Choose a file", 
+                                         key="upload_src", 
+                                         disabled=not on,
+                                         type = ['jpeg','jpg','png','webp'])
 
 with col2:
     col2.header("Image 2")
@@ -101,7 +104,10 @@ with col2:
         key="inputpath_des",
         disabled=on,
     )
-    uploaded_file_des = st.file_uploader("Choose a file",key="upload_des", disabled=not on)
+    uploaded_file_des = st.file_uploader("Choose a file",
+                                         key="upload_des", 
+                                         disabled=not on,
+                                         type = ['jpeg','jpg','png','webp'])
 
 
 if st.button("Check", type="primary"):
