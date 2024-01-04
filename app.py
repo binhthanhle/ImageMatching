@@ -106,7 +106,7 @@ if on:
 else:
     result = matching(path1 = uploaded_file_src, path2 = path_des, kind = 'path', draw = draw) 
 
-if result:
+if result==1:
     st.markdown(MATCH_LABEL, unsafe_allow_html=True)
 else:
     st.markdown(NOT_MATCH_LABEL, unsafe_allow_html=True)
