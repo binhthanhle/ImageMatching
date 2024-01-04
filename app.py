@@ -107,7 +107,7 @@ with col2:
 if st.button("Check", type="primary"):
 
     if on:
-        if (uploaded_file_src is not None & uploaded_file_des is not None):
+        if (uploaded_file_src is not None) and (uploaded_file_des is not None):
             result = matching(path1 = uploaded_file_src, path2 = uploaded_file_des, kind = 'file', draw = draw)
     else:
         if path_src is not None and path_des is not None:
