@@ -23,7 +23,7 @@ def matching(path1 = None, path2 = None, kind:str = 'path', draw:bool =False) ->
     """ Function to get the matching between two images
     """
     img1, img2 = get_input(kind, path1, path2)
-    fig, ax = plt.figure(figsize=(5, 5))
+    fig, ax = plt.subplots(figsize=(5, 5))
     plt.imshow(img_match, 'gray', ax=ax),
     st.pyplot(fig)
     # Size:
@@ -57,7 +57,7 @@ def matching(path1 = None, path2 = None, kind:str = 'path', draw:bool =False) ->
                     matchesMask = matchesMask, # draw only inliers
                     flags = 2)
         img_match = cv.drawMatches(img1,kp1,img2,kp2,good,None,**draw_params)
-        fig, ax = plt.figure(figsize=(5, 5))
+        fig, ax = plt.subplots(figsize=(5, 5))
         ax.imshow(img_match, 'gray'),
         st.pyplot(fig)
 
